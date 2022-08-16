@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <title>Challenge 1</title>
+</head>
+<body>
+    <div class="contenedor-texto">
+        <input type="text" class="introTexto" id="Texto" placeholder="Ingrese el texto">
+        <div class="abajo">
+            <p>Solo texto y sin acentos.</p>
+            <div class="botones">
+                <button class="botton-encriptar"  onclick="Encriptar()" >Encriptar</button>
+                <button class="Botton" onclick="Desencriptar()">Desencritar</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="contenedor-textocopia">
+        <p id="valueInput"></p> 
+        <div class="abajo">
+            <button class="Botton" onclick="copiarAlPortapapeles()">Copiar</button>
+        </div>
+    </div>
+
+    <script>
+
+    const Encriptar = () =>{
+      let texto = document.getElementById("Texto").value; 
+      var textoCifrado = texto.replace(/e/gi, "enter").replace(/i/gi, "imes").replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat");
+      document.getElementById("valueInput").innerHTML = textoCifrado; 
+    }
+
+    const Desencriptar = () =>{
+      let texto = document.getElementById("Texto").value; 
+      var textoCifrado = texto.replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ai/gi, "a").replace(/ober/gi, "o").replace(/ufat/gi, "u"); 
+      document.getElementById("valueInput").innerHTML = textoCifrado; 
+    }
+
+    function copiarAlPortapapeles() {
+        var codigoACopiar = document.getElementById('valueInput');
+        var seleccion = document.createRange();
+        seleccion.selectNodeContents(codigoACopiar);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(seleccion);
+        var res = document.execCommand('copy');
+        window.getSelection().removeRange(seleccion);
+    }
+    </script>
+</body>
+</html>
